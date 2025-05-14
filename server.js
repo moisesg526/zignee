@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-const connectDB = require("./config/database");
+// const connectDB = require("./config/database");
+const homeRoutes = require("./routes/home");
 
 require("dotenv").config({ path: "./config/.env" });
 
-connectDB();
+// connectDB();
 
 // Tells express to use EJS as the templating engine
 app.set("view engine", "ejs");
@@ -14,6 +15,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 // Parses incoming requests with application/json
 app.use(express.json());
+
+app.use("/", homeRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
