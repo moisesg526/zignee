@@ -19,9 +19,11 @@ body {
   flex: 1;
 }
 
-.login-text {
+.login-text p {
   line-height: 1.4rem;
   font-size: 1.2rem;
+  max-width: 40ch;
+  margin: auto;
 }
 
 .login ul {
@@ -34,9 +36,20 @@ body {
 
 .login ul li {
   border: 2px solid #fff;
-  font-size: 2rem;
+  font-size: 1.2rem;
   list-style: none;
   cursor: pointer;
   height: 4rem;
   width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-btns {
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
 }
