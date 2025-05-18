@@ -30,8 +30,10 @@ body {
   margin: auto;
 }
 
-.login ul li {
+.login ul a {
   border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
   font-size: 1.2rem;
   list-style: none;
   cursor: pointer;
@@ -58,10 +60,10 @@ ul {
   gap: 2rem;
 }
 
-li {
+a {
   padding: 1.4rem;
 }
 
-li:active {
+a:active {
   background-color: rgb(17, 50, 71);
 }

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 // const connectDB = require("./config/database");
 const homeRoutes = require("./routes/home");
+const userRoute = require("./routes/userRoute");
 
 require("dotenv").config({ path: "./config/.env" });
 
@@ -17,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/", homeRoutes);
+app.use("/login", userRoute);
+app.use("/signup", userRoute)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
