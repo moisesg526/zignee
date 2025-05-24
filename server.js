@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
-// const connectDB = require("./config/database");
+const mongoose = require("mongoose");
+const passport = require("passport");
+const connectDB = require("./config/database");
 const homeRoutes = require("./routes/home");
 const userRoute = require("./routes/userRoute");
 
 require("dotenv").config({ path: "./config/.env" });
 
-// connectDB();
+connectDB();
 
 // Tells express to use EJS as the templating engine
 app.set("view engine", "ejs");
@@ -19,7 +21,7 @@ app.use(express.json());
 
 app.use("/", homeRoutes);
 app.use("/login", userRoute);
-app.use("/signup", userRoute)
+app.use("/signup", userRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
