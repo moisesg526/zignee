@@ -2,11 +2,17 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const logger = require("morgan");
 const connectDB = require("./config/database");
 const homeRoutes = require("./routes/home");
 const userRoute = require("./routes/userRoute");
 
 require("dotenv").config({ path: "./config/.env" });
+
+// Passport config
+require("./config/passport")(passport);
 
 connectDB();
 
@@ -18,6 +24,21 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 // Parses incoming requests with application/json
 app.use(express.json());
+app.use(logger("dev"));
+
+// Sessions
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", homeRoutes);
 app.use("/login", userRoute);
