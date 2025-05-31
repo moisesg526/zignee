@@ -4,9 +4,10 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/database");
 const homeRoutes = require("./routes/home");
 const userRoute = require("./routes/userRoute");
+const session = require("express-session");
+const passport = require("passport");
 
 require("dotenv").config({ path: "./config/.env" });
-
 
 connectDB();
 
@@ -19,6 +20,18 @@ app.use(express.urlencoded({ extended: true }));
 // Parses incoming requests with application/json
 app.use(express.json());
 
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
 app.use("/", homeRoutes);
 app.use("/login", userRoute);
 app.use("/signup", userRoute);
