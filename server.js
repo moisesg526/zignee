@@ -5,26 +5,31 @@ const connectDB = require("./config/database");
 const homeRoutes = require("./routes/home");
 const userRoute = require("./routes/userRoute");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const passport = require("passport");
 
 require("dotenv").config({ path: "./config/.env" });
 
 connectDB();
 
-// Tells express to use EJS as the templating engine
+// Set view engine and static folder
 app.set("view engine", "ejs");
-// Serves static files from public directory. ex. CSS, JS, images
 app.use(express.static("public"));
-// Lets you access form data via req.body
+
+// Parse form and JSON data
 app.use(express.urlencoded({ extended: true }));
-// Parses incoming requests with application/json
 app.use(express.json());
 
+// Passport Config
+require("./config/passport")(passport);
+
+//Express session (stored in MogoDB)
 app.use(
   session({
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.DB_STRING }),
   })
 );
 
@@ -33,8 +38,7 @@ app.use(passport.session());
 
 // Routes
 app.use("/", homeRoutes);
-app.use("/login", userRoute);
-app.use("/signup", userRoute);
+app.use("/user", userRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);

@@ -8,18 +8,14 @@
   <body>
     <main>
       <section class="signup-form">
-        <form action="/user/signup" method="post">
-          <label>Signup</label>
-          <input type="text" placeholder="Name" name="usersName" />
-          <input type="text" placeholder="Last Name" name="usersLastName" />
-          <input type="text" placeholder="Email" name="userEmail" />
-          <input type="text" placeholder="Password" name="userPassword" />
-          <input
-            type="text"
-            placeholder="Confirm Password"
-            name="confirmPassword"
-          />
-          <input type="submit" />
+        <form action="/user/signup" method="POST">
+          <label for="username">Username</label>
+          <input type="text" name="username" required />
+
+          <label for="password">Password</label>
+          <input type="password" name="password" required />
+
+          <button type="submit">Create Account</button>
         </form>
       </section>
     </main>
