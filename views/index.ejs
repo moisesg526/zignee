@@ -6,28 +6,33 @@
     <link rel="stylesheet" href="/css/style.css" />
     <title>Zignee</title>
   </head>
-  <body class="bg-accent">
-    <header>
-      <h1>Zignee</h1>
-    </header>
-    <main class="flex">
-      <section>
-        <h2>Welcome!</h2>
-        <p>
-          Always on the go and rarely home? If you’ve paid for express or
-          priority delivery but won’t be available to receive your package,
-          avoid the hassle of visiting a carrier facility. Simply sign for it
-          here and let your carrier know where you’d like it delivered.
-        </p>
-      </section>
-      <section class="login-btns log-sec">
-        <h1>Login</h1>
-        <ul>
-          <a href="/user/login" class="btn btn-primary">Login</a>
-          <a href="/user/signup" class="btn btn-primary">Sign Up</a>
-        </ul>
-      </section>
-    </main>
+  <body class="bg-base-100">
+    <div class="bg-primary">
+      <header class="flex items-center">
+        <h2 class="text-5xl">Welcome to</h2>
+        <h1 class="text-5xl text-neutral container mx-auto">Zignee</h1>
+      </header>
+      <main>
+        <section>
+          <p class="text-neutral">
+            Always on the go and rarely home? If you’ve paid for express or
+            priority delivery but won’t be available to receive your package,
+            avoid the hassle of visiting a carrier facility. Simply sign for it
+            here and let your carrier know where you’d like it delivered.
+          </p>
+        </section>
+        <section class="login-btns log-sec">
+          <ul>
+            <li>
+              <a href="/user/login" class="btn btn-accent">Login</a>
+            </li>
+            <li>
+              <a href="/user/signup" class="btn btn-accent">Sign Up</a>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
     <script src="/public/js/main.js"></script>
   </body>
 </html>
