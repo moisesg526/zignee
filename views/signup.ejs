@@ -1,23 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="mytheme">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Zignee Signup</title>
   </head>
-  <body>
-    <main>
-      <section class="signup-form">
-        <form action="/user/signup" method="POST">
-          <label for="username">Username</label>
-          <input type="text" name="username" required />
+  <body class="bg-neutral h-screen flex flex-col items-center justify-center">
+    <h2 class="text-2xl font-bold py-10">Lets Sign Up!</h2>
+    <form action="/user/signup" method="POST" class="flex flex-col">
+      <div class="flex items-center flex-col gap-3 md:p-10 py-5 md:py-0">
+        <label class="text-xl font-medium" for="username">Username</label>
+        <input
+          type="text"
+          class="input input-bordered input-accent w-full max-w-xl"
+          name="username"
+          required
+        />
 
-          <label for="password">Password</label>
-          <input type="password" name="password" required />
+        <label class="text-xl font-medium" for="password">Password</label>
+        <input
+          type="password"
+          class="input input-bordered input-accent w-full"
+          name="password"
+          required
+        />
+        <h2 class="text-xl font-medium">Select</h2>
 
-          <button type="submit">Create Account</button>
-        </form>
-      </section>
-    </main>
+        <select class="select select-accent w-full max-w-xl">
+          <option disabled selected>Customer or Carrier?</option>
+          <option>Customer</option>
+          <option>Carrier</option>
+        </select>
+      </div>
+      <button
+        class="btn btn-accent btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl mt-10"
+        type="submit"
+      >
+        Create Account
+      </button>
+    </form>
   </body>
 </html>
