@@ -18,21 +18,21 @@ module.exports = {
     },
   },
   plugins: [require("daisyui")],
-  daisyui: {
-    themes: [
-      {
-        mytheme: {
-          "primary": "#06BCC1",
-          "secondary": "#F4D1AE",
-          "accent": "#C5D8D1",
-          "neutral": "#12263A",
-          "base-100": "#F4EDEA",
-          "info": "#06BCC1",
-          "success": "#36D399",
-          "warning": "#FBBD23",
-          "error": "#F87272",
-        },
-      },
-    ],
-  },
+  // daisyui: {
+  //   themes: [
+  //     {
+  //       mytheme: {
+  //         "primary": "#06BCC1",
+  //         "secondary": "#F4D1AE",
+  //         "accent": "#C5D8D1",
+  //         "neutral": "#12263A",
+  //         "base-100": "#F4EDEA",
+  //         "info": "#06BCC1",
+  //         "success": "#36D399",
+  //         "warning": "#FBBD23",
+  //         "error": "#F87272",
+  //       },
+  //     },
+  //   ],
+  // },
 };

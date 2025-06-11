@@ -6,12 +6,18 @@
   prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
   color-scheme: light; /* color of browser-provided UI */
 
-  --color-primary: #06bcc1;
+  --color-primary: #12263a;
   --color-secondary: #f4d1ae;
-  --color-accent: #c5d8d1;
-  --color-neutral: #12263a;
+  --color-accent: #06BCC1;
+  --color-neutral: #C5D8D1;
   --color-base-100: #f4edea;
   --color-success: #36d399;
   --color-warning: #fbbd23;
   --color-error: #f87272;
 }
+
+/* Background: #C5D8D1, Font: #12263A
+Background: #F4EDEA, Font: #12263A
+Banner Background: #12263A, Banner Text: #F4EDEA
+Banner Background: #06BCC1, Banner Text: #C5D8D1
+Call to Action Banner Background: #F4D1AE, Call to Action Text: #12263A */

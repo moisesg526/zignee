@@ -19,3 +19,8 @@ Utilize tailwindcss and used Daisyui to style the MVP.
 1. Clone repo
 2. run npm install
 3. update DB_STRING in config/.env
+
+# Usage:
+
+1. run npm run dev
+2. Navigate to localhost:8080
