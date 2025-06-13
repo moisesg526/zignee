@@ -7,27 +7,31 @@
     <title>Zignee Signup</title>
   </head>
   <body class="bg-neutral h-screen flex flex-col items-center justify-center">
-    <h2 class="text-2xl font-bold py-10">Lets Sign Up!</h2>
+    <h2 class="text-3xl font-bold py-8 text-primary">Lets Sign Up!</h2>
     <form action="/user/signup" method="POST" class="flex flex-col">
-      <div class="flex items-center flex-col gap-3 md:p-10 py-5 md:py-0">
-        <label class="text-xl font-medium" for="username">Username</label>
+      <div class="flex items-center flex-col gap-2 md:p-10 py-5 md:py-0">
+        <label class="text-xl font-medium text-primary" for="username"
+          >Username</label
+        >
         <input
           type="text"
-          class="input input-bordered input-accent w-full max-w-xl"
+          class="input input-bordered input-accent w-full max-w-xl text-primary"
           name="username"
           required
         />
 
-        <label class="text-xl font-medium" for="password">Password</label>
+        <label class="text-xl font-medium text-primary" for="password"
+          >Password</label
+        >
         <input
           type="password"
-          class="input input-bordered input-accent w-full"
+          class="input input-bordered input-accent w-full text-primary"
           name="password"
           required
         />
-        <h2 class="text-xl font-medium">Select</h2>
+        <h2 class="text-xl font-medium text-primary">Select</h2>
 
-        <select class="select select-accent w-full max-w-xl">
+        <select class="select select-accent w-full max-w-xl" required>
           <option disabled selected>Customer or Carrier?</option>
           <option>Customer</option>
           <option>Carrier</option>
