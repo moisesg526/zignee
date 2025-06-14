@@ -7,45 +7,52 @@
     <title>Zignee</title>
   </head>
   <body class="bg-neutral flex justify-center items-center h-screen">
-    <div
-      class="flex flex-col md:flex-row items-center justify-center gap-10 p-5 w-full max-w-6xl"
-    >
-      <div class="w-full md:w-1/2 flex justify-center">
-        <img
-          src="/images/package.jpeg"
-          alt="login"
-          class="max-w-full h-auto rounded-xl shadow-md"
-        />
+    <div class="flex flex-col items-center text-center px-4 w-full max-w-6xl">
+      <h1 class="text-5xl text-primary mb-10">Zignee</h1>
+
+      <div class="flex flex-col md:flex-row items-center justify-center gap-10">
+        <!-- Image Section -->
+        <div class="flex justify-center w-full md:w-1/2">
+          <img
+            src="/images/package.jpeg"
+            alt="login"
+            class="max-w-full h-auto rounded-xl shadow-md"
+          />
+        </div>
+
+        <!-- Text and Buttons -->
+        <main class="flex flex-col items-center justify-center w-full md:w-1/2">
+          <section
+            class="bg-secondary p-8 rounded-xl shadow text-primary mb-8 w-full"
+          >
+            <p>
+              Always on the go and rarely home? If you’ve paid for express or
+              priority delivery but won’t be available to receive your package,
+              avoid the hassle of visiting a carrier facility. Simply sign for
+              it here and let your carrier know where you’d like it delivered.
+            </p>
+          </section>
+
+          <section class="login-btns log-sec">
+            <ul class="flex gap-5">
+              <li>
+                <a
+                  href="/user/login"
+                  class="btn btn-accent btn-sm md:btn-md lg:btn-lg"
+                  >Login</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/user/signup"
+                  class="btn btn-accent btn-sm md:btn-md lg:btn-lg"
+                  >Sign Up</a
+                >
+              </li>
+            </ul>
+          </section>
+        </main>
       </div>
-      <main class="text-center flex flex-col justify-center items-center">
-        <h1 class="text-5xl container mx-auto text-primary py-5">Zignee</h1>
-        <section class="bg-secondary max-w-1/3 p-10 text-center my-10">
-          <p class="text-primary">
-            Always on the go and rarely home? If you’ve paid for express or
-            priority delivery but won’t be available to receive your package,
-            avoid the hassle of visiting a carrier facility. Simply sign for it
-            here and let your carrier know where you’d like it delivered.
-          </p>
-        </section>
-        <section class="login-btns log-sec">
-          <ul class="flex gap-5">
-            <li>
-              <a
-                href="/user/login"
-                class="btn btn-accent btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl"
-                >Login</a
-              >
-            </li>
-            <li>
-              <a
-                href="/user/signup"
-                class="btn btn-accent btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl"
-                >Sign Up</a
-              >
-            </li>
-          </ul>
-        </section>
-      </main>
     </div>
     <script src="/public/js/main.js"></script>
   </body>
