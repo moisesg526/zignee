@@ -11,6 +11,11 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  customerOrCarrier: {
+    type: String,
+    enum: ["Customer", "Carrier"],
+    required: true,
+  },
 });
 
 // Hash password before saving

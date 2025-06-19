@@ -31,10 +31,16 @@
         />
         <h2 class="text-xl font-medium text-primary">Select</h2>
 
-        <select class="select select-accent w-full max-w-xl" required>
-          <option disabled selected>Customer or Carrier?</option>
-          <option>Customer</option>
-          <option>Carrier</option>
+        <select
+          type="customerOrCarrier"
+          class="select select-accent w-full max-w-xl text-primary"
+          required
+        >
+          <option disabled selected class="text-primary">
+            Customer or Carrier?
+          </option>
+          <option value="Customer">Customer</option>
+          <option value="Carrier">Carrier</option>
         </select>
       </div>
       <button
