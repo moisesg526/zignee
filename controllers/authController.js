@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   getLoginPage: (req, res) => {
@@ -28,7 +29,7 @@ module.exports = {
   },
 
   postSignup: async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, customerOrCarrier } = req.body;
     try {
       // Check if user already exists
       const existingUser = await User.findOne({ username });
@@ -36,8 +37,15 @@ module.exports = {
         return res.status(400).send("User already exists");
       }
 
+      // Password gets hashed for better security
+      const hashedPassword = await bcrypt.hash(password, 10);
+
       // Create new user
-      const newUser = new User({ username, password });
+      const newUser = new User({
+        username,
+        password: hashedPassword,
+        customerOrCarrier,
+      });
       await newUser.save();
 
       res.redirect("/login");

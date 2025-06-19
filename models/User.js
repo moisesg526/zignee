@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -13,7 +14,10 @@ const UserSchema = new mongoose.Schema({
   },
   customerOrCarrier: {
     type: String,
-    enum: ["Customer", "Carrier"],
+    enum: {
+      values: ["Customer", "Carrier"],
+      message: "Please select either 'Customer' or 'Carrier'.",
+    },
     required: true,
   },
 });
