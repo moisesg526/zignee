@@ -8,14 +8,25 @@
   </head>
   <body class="bg-neutral h-screen flex flex-col items-center justify-center">
     <h2 class="text-3xl font-bold py-8 text-primary">Lets Sign Up!</h2>
-    <form action="/user/signup" method="POST" class="flex flex-col">
-      <div class="flex items-center flex-col gap-2 md:p-10 py-5 md:py-0">
+    <form
+      action="/user/signup"
+      method="POST"
+      class="flex flex-col border-4 p-14 bg-neutral"
+    >
+      <div class="flex flex-col gap-2">
+        <label class="text-primary text-xl font-medium" for="name">Name</label>
+        <input
+          class="input input-accent text-primary"
+          type="text"
+          name="name"
+          required
+        />
         <label class="text-xl font-medium text-primary" for="username"
           >Username</label
         >
         <input
           type="text"
-          class="input input-bordered input-accent w-full max-w-xl text-primary"
+          class="input input-accent text-primary"
           name="username"
           required
         />
@@ -25,7 +36,7 @@
         >
         <input
           type="password"
-          class="input input-bordered input-accent w-full text-primary"
+          class="input input-accent text-primary"
           name="password"
           required
         />
