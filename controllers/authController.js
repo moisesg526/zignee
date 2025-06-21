@@ -30,7 +30,7 @@ module.exports = {
   },
 
   postSignup: async (req, res) => {
-    const { username, password, customerOrCarrier } = req.body;
+    const { name, username, password, customerOrCarrier } = req.body;
     try {
       // Check if user already exists
       const existingUser = await User.findOne({ username });
@@ -43,13 +43,14 @@ module.exports = {
 
       // Create new user
       const newUser = new User({
+        name,
         username,
         password: hashedPassword,
         customerOrCarrier,
       });
       await newUser.save();
 
-      res.redirect("/login");
+      res.redirect("/dashboard");
     } catch (err) {
       console.log(err);
       res.status(500).send("Error signing up user");
