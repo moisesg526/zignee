@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/database");
 const homeRoutes = require("./routes/home");
 const userRoute = require("./routes/userRoute");
+const dashboardRoute = require("./routes/dashboardRoute");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const passport = require("passport");
@@ -39,6 +40,7 @@ app.use(passport.session());
 // Routes
 app.use("/", homeRoutes);
 app.use("/user", userRoute);
+app.use("/dashboard", dashboardRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
