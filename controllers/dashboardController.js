@@ -1,8 +1,9 @@
-const User = require("../models/Package");
-//////// Left of trying to display dashboard with name of user!
+const User = require("../models/User");
 
 module.exports = {
-  getDashboard: (req, res) => {
+  getDashboard: async (req, res) => {
     res.render("customerDashboard.ejs");
+    // const user = await User.find({ name: req.user.nam });
+    // console.log(user);
   },
 };
