@@ -7,7 +7,18 @@ module.exports = {
     "./controllers/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      // color: {
+      //   primary: "#12263a",
+      //   secondary: "#f4d1ae",
+      //   accent: "#06BCC1",
+      //   neutral: "#b9d0c8",
+      //   " base-100": "#f4edea",
+      //   success: "#36d399",
+      //   warning: "#fbbd23",
+      //   error: " #f87272",
+      // },
+    },
     screens: {
       sm: "640px",
       md: "768px",
