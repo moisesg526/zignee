@@ -15,12 +15,14 @@
         >Logout</a
       >
     </header>
-    <main class="flex justify-evenly items-center">
-      <section>
+    <main class="flex justify-evenly items-center border-1 rounded border-accent shadow-2xl p-10">
+      <section> 
         <h2 class="font-bold">Your Packages</h2>
       </section>
       <section class="flex gap-4">
-        <div class="border-2 border-base-100 shadow-lg rounded">Calendar</div>
+        <div class="border-2 border-base-100 shadow-lg rounded">
+          <p class="p-3"><%= new Date().toDateString() %></p>
+        </div>
         <div class="border-2 border-base-100 shadow-lg rounded">
           <h3>Hello, !</h3>
           <p>Don't forget to track your Packages</p>
