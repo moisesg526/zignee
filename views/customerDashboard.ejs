@@ -8,25 +8,60 @@
   </head>
   <body class="bg-neutral h-screen text-primary w-full p-10">
     <header class="flex justify-evenly p-4 items-center">
-      <img src="/images/zignee-logo.png" alt="Zignee logo" class="w-30" />
+      <img src="/images/zignee-logo.png" alt="Zignee logo" class="w-40" />
       <a
         href="/dashboard/logout"
         class="border-2 border-base-100 px-2 py-2 rounded"
         >Logout</a
       >
     </header>
-    <main class="flex justify-evenly items-center border-1 rounded border-accent shadow-2xl p-10">
-      <section> 
+    <main
+      class="flex justify-evenly items-center border-1 rounded border-accent shadow-2xl p-10 h-fit"
+    >
+      <section>
         <h2 class="font-bold">Your Packages</h2>
       </section>
-      <section class="flex gap-4">
-        <div class="border-2 border-base-100 shadow-lg rounded">
-          <p class="p-3"><%= new Date().toDateString() %></p>
-        </div>
-        <div class="border-2 border-base-100 shadow-lg rounded">
-          <h3>Hello, !</h3>
-          <p>Don't forget to track your Packages</p>
-        </div>
+      <section>
+        <section class="flex gap-4 text-center">
+          <div class="border-2 border-base-100 shadow-lg rounded">
+            <p class="p-3 flex justify-center">
+              <%= new Date().toDateString() %>
+            </p>
+          </div>
+          <div class="border-2 border-base-100 shadow-lg rounded">
+            <h3>Hello, <%= name %>!</h3>
+            <p class="p-6">Don't forget to track your Packages</p>
+          </div>
+        </section>
+        <form action="addPackage" class="flex flex-col py-6 gap-4">
+          <label class="text-center text-2xl">Add a package</label>
+          <input
+            type="text"
+            placeholder="Tracking Number"
+            class="border border-base-100 rounded-2xl p-2"
+          />
+          <input
+            type="text"
+            placeholder="Address"
+            class="border border-base-100 rounded-2xl p-2"
+          />
+          <input
+            type="text"
+            placeholder="Leave at Mailbox, door, etc.."
+            class="border border-base-100 rounded-2xl p-2"
+          />
+          <input
+            type="text"
+            placeholder="Name"
+            class="border border-base-100 rounded-2xl p-2"
+          />
+          <button
+            class="btn btn-accent btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl mt-2"
+            type="submit"
+          >
+            Add Package
+          </button>
+        </form>
       </section>
     </main>
     <script src="/public/js/main.js"></script>
