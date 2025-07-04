@@ -11,7 +11,7 @@
       <img src="/images/zignee-logo.png" alt="Zignee logo" class="w-40" />
       <a
         href="/dashboard/logout"
-        class="border-2 border-base-100 px-2 py-2 rounded"
+        class="btn btn-accent px-2 py-2 rounded border border-base-100"
         >Logout</a
       >
     </header>
@@ -24,13 +24,21 @@
       <section>
         <section class="flex gap-4 text-center">
           <div class="border-2 border-base-100 shadow-lg rounded">
-            <p class="p-3 flex justify-center">
-              <%= new Date().toDateString() %>
+            <p class="p-3 flex justify-center text-xl"><%= currentMonth %></p>
+            <p class="p-3 flex justify-center text-2xl font-bold">
+              <%= new Date().getDate() %>
+            </p>
+            <p class="p-3 flex justify-center text-xl">
+              <%= new Date().getFullYear() %>
             </p>
           </div>
           <div class="border-2 border-base-100 shadow-lg rounded">
             <h3>Hello, <%= name %>!</h3>
-            <p class="p-6">Don't forget to track your Packages</p>
+            <p class="p-6 max-w-xl">
+              When filling the following form you are virtually signing for the
+              package and agreeing for your carrier to deliver the parcel in the
+              specified location.
+            </p>
           </div>
         </section>
         <form action="addPackage" class="flex flex-col py-6 gap-4">
@@ -52,7 +60,7 @@
           />
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Signature"
             class="border border-base-100 rounded-2xl p-2"
           />
           <button
