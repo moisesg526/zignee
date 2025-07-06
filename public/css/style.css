@@ -580,9 +580,6 @@
   .border-base-100 {
     border-color: var(--color-base-100);
   }
-  .bg-accent {
-    background-color: var(--color-accent);
-  }
   .bg-neutral {
     background-color: var(--color-neutral);
   }
