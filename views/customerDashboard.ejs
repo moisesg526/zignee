@@ -26,14 +26,12 @@
           <div class="border-2 border-base-100 shadow-lg rounded">
             <p class="p-3 flex justify-center text-xl"><%= currentMonth %></p>
             <p class="p-3 flex justify-center text-2xl font-bold">
-              <%= new Date().getDate() %>
+              <%= currentDate %>
             </p>
-            <p class="p-3 flex justify-center text-xl">
-              <%= new Date().getFullYear() %>
-            </p>
+            <p class="p-3 flex justify-center text-xl"><%= currentYear %></p>
           </div>
           <div class="border-2 border-base-100 shadow-lg rounded">
-            <h3>Hello, !</h3>
+            <h3>Hello, <%= name %>!</h3>
             <p class="p-6 max-w-xl">
               When filling the following form you are virtually signing for the
               package and agreeing for your carrier to deliver the parcel in the
@@ -41,34 +39,42 @@
             </p>
           </div>
         </section>
-        <form action="/dashboard/addPackage" class="flex flex-col py-6 gap-4">
+        <form
+          action="/dashboard/addPackage"
+          method="POST"
+          class="flex flex-col py-6 gap-4"
+        >
           <label class="text-center text-2xl">Add a package</label>
+
           <input
+            name="trackingNumber"
             type="text"
             placeholder="Tracking Number"
             class="border border-base-100 rounded-2xl p-2"
           />
+
           <input
+            name="address"
             type="text"
             placeholder="Address"
             class="border border-base-100 rounded-2xl p-2"
           />
+
           <input
+            name="dropOffLocation"
             type="text"
             placeholder="Leave at Mailbox, door, etc.."
             class="border border-base-100 rounded-2xl p-2"
           />
+
           <input
+            name="signature"
             type="text"
             placeholder="Signature"
             class="border border-base-100 rounded-2xl p-2"
           />
-          <button
-            class="btn btn-accent btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl mt-2"
-            type="submit"
-          >
-            Add Package
-          </button>
+
+          <button class="btn btn-accent mt-2" type="submit">Add Package</button>
         </form>
       </section>
     </main>

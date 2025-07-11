@@ -13,9 +13,12 @@ module.exports = {
   },
 
   postLogin: (req, res, next) => {
-    passport.authenticate("local", (err, user) => {
+    passport.authenticate("local", (err, user, info) => {
       if (err) return next(err);
-      if (!user) return res.redirect("/user/login");
+      if (!user) {
+        console.log("Login failed:", info?.message);
+        return res.redirect("/user/login");
+      }
 
       req.logIn(user, (err) => {
         if (err) return next(err);
@@ -31,7 +34,7 @@ module.exports = {
   logout: (req, res, next) => {
     req.logout(function (err) {
       if (err) {
-        return next(err); // properly handle error
+        return next(err);
       }
 
       req.session.destroy(function (err) {
@@ -47,19 +50,14 @@ module.exports = {
     });
   },
 
-  postSignup: async (req, res) => {
+  postSignup: async (req, res, next) => {
     const { name, username, password, customerOrCarrier } = req.body;
     try {
-      // Check if user already exists
       const existingUser = await User.findOne({ username });
       if (existingUser) {
         return res.status(400).send("User already exists");
       }
-
-      // Password gets hashed for better security
       const hashedPassword = await bcrypt.hash(password, 10);
-
-      // Create new user
       const newUser = new User({
         name,
         username,
@@ -67,8 +65,10 @@ module.exports = {
         customerOrCarrier,
       });
       await newUser.save();
-
-      res.redirect("/dashboard");
+      req.logIn(newUser, (err) => {
+        if (err) return next(err);
+        return res.redirect("/dashboard");
+      });
     } catch (err) {
       console.log(err);
       res.status(500).send("Error signing up user");

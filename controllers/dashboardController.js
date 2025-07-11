@@ -1,26 +1,46 @@
 const User = require("../models/User");
 const Package = require("../models/Package");
 
+function ensureAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/user/login");
+}
+
 module.exports = {
-  addPackage: async (req, res) => {
-    
-  },
+  ensureAuth,
+
   getDashboard: async (req, res) => {
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const currentMonth = monthNames[new Date().getMonth()];
-    res.render("customerDashboard.ejs", { currentMonth });
+    try {
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const today = new Date();
+      const currentMonth = monthNames[today.getMonth()];
+      const currentDate = today.getDate();
+      const currentYear = today.getFullYear();
+
+      res.render("customerDashboard.ejs", {
+        currentMonth,
+        currentDate,
+        currentYear,
+        name: req.user.name,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Server Error");
+    }
   },
 };
