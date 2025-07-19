@@ -1,9 +1,9 @@
 const passport = require("passport");
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
+const validator = require("validator");
 
 module.exports = {
-  getLoginPage: (req, res) => {
+  getLogin: (req, res) => {
     if (req.user) {
       return res.redirect("/dashboard");
     }
@@ -13,16 +13,28 @@ module.exports = {
   },
 
   postLogin: (req, res, next) => {
+    const validationErrors = [];
+    if (validator.isEmpty(req.body.password))
+      validationErrors.push({ msg: "Password cannot be blank." });
+
+    if (validationErrors.length) {
+      console.log("errors", validationErrors);
+      return res.redirect("/user/login");
+    }
     passport.authenticate("local", (err, user, info) => {
-      if (err) return next(err);
+      if (err) {
+        return next(err);
+      }
       if (!user) {
         console.log("Login failed:", info?.message);
         return res.redirect("/user/login");
       }
-
       req.logIn(user, (err) => {
-        if (err) return next(err);
-        return res.redirect("/dashboard");
+        if (err) {
+          return next(err);
+        }
+        console.log("success", { msg: "Success! You are logged in." });
+        res.redirect(req.session.returnTo || "/dashboard");
       });
     })(req, res, next);
   },
@@ -57,11 +69,10 @@ module.exports = {
       if (existingUser) {
         return res.status(400).send("User already exists");
       }
-      const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = new User({
         name,
         username,
-        password: hashedPassword,
+        password: req.body.password,
         customerOrCarrier,
       });
       await newUser.save();

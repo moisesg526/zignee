@@ -9,7 +9,7 @@ router.get("/signup", authController.getSignupPage);
 router.post("/signup", authController.postSignup);
 
 // GET: Login form
-router.get("/login", authController.getLoginPage);
+router.get("/login", authController.getLogin);
 
 // POST: Login route (local strategy)
 router.post("/login", authController.postLogin);
