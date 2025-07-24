@@ -43,4 +43,23 @@ module.exports = {
       res.status(500).send("Server Error");
     }
   },
+  addPackage: async (req, res) => {
+    const { trackingNum, address, deliveryLocation, signature, completed } =
+      req.body;
+    try {
+      const existingPackage = await Package.findOne({ trackingNum });
+      if (existingPackage) {
+        return res.status(400).send("Package already exists");
+      }
+      const newPackage = new Package({
+        trackingNum,
+        address,
+        deliveryLocation,
+        signature,
+      });
+      await new Package.save();
+    } catch (err) {
+      console.error(err);
+    }
+  },
 };

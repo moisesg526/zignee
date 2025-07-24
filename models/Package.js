@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const DashboardSchema = new mongoose.Schema({
-  trackingNo: {
+  trackingNum: {
     type: String,
     required: true,
   },
@@ -13,7 +13,7 @@ const DashboardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  signatureConfirmation: {
+  signature: {
     type: String,
     required: true,
   },
@@ -26,3 +26,5 @@ const DashboardSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+module.exports = mongoose.model("Package", DashboardSchema);
