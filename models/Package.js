@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const DashboardSchema = new mongoose.Schema({
+const packageSchema = new mongoose.Schema({
   trackingNum: {
-    type: String,
+    type: Number,
     required: true,
   },
   address: {
@@ -27,4 +27,4 @@ const DashboardSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Package", DashboardSchema);
+module.exports = mongoose.model("Package", packageSchema);

@@ -44,22 +44,28 @@ module.exports = {
     }
   },
   addPackage: async (req, res) => {
-    const { trackingNum, address, deliveryLocation, signature, completed } =
-      req.body;
     try {
-      const existingPackage = await Package.findOne({ trackingNum });
-      if (existingPackage) {
-        return res.status(400).send("Package already exists");
-      }
-      const newPackage = new Package({
+      const { trackingNum, address, deliveryLocation, signature } = req.body;
+
+      await Package.create({
+        trackingNum,
+        address,
+        deliveryLocation,
+        signature,
+        completed: false,
+        userId: req.user._id,
+      });
+
+      console.log("Package created:", {
         trackingNum,
         address,
         deliveryLocation,
         signature,
       });
-      await new Package.save();
+      res.redirect("/dashboard");
     } catch (err) {
-      console.error(err);
+      console.log("Package validation error:", err);
+      res.status(400).send("Package validation error");
     }
   },
 };
