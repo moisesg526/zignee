@@ -20,6 +20,20 @@
     >
       <section>
         <h2 class="font-bold">Your Packages</h2>
+        <div>
+          <ul>
+            <% if (packages.length > 0) { %> <% packages.forEach(pkg => { %>
+            <li class="p-2 border rounded mb-2">
+              Tracking Number: <%= pkg.trackingNum %><br />
+              Address: <%= pkg.address %><br />
+              Location: <%= pkg.deliveryLocation %><br />
+              Signature: <%= pkg.signature %>
+            </li>
+            <% }) %> <% } else { %>
+            <li>No packages yet.</li>
+            <% } %>
+          </ul>
+        </div>
       </section>
       <section>
         <section class="flex gap-4 text-center">

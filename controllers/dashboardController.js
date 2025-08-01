@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Package = require("../models/Package");
+const { delimiter } = require("ejs");
 
 function ensureAuth(req, res, next) {
   if (req.isAuthenticated()) {
@@ -32,11 +33,14 @@ module.exports = {
       const currentDate = today.getDate();
       const currentYear = today.getFullYear();
 
+      const packages = await Package.find({ userId: req.user._id });
+
       res.render("customerDashboard.ejs", {
         currentMonth,
         currentDate,
         currentYear,
         name: req.user.name,
+        packages,
       });
     } catch (err) {
       console.error(err);
@@ -66,6 +70,16 @@ module.exports = {
     } catch (err) {
       console.log("Package validation error:", err);
       res.status(400).send("Package validation error");
+    }
+  },
+
+  getPackage: async (req, res) => {
+    try {
+      res.render("customerDashboard.ejs", {
+        trackingNum: trackingNum,
+      });
+    } catch (err) {
+      console.log(err);
     }
   },
 };
