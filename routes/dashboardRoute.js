@@ -5,7 +5,7 @@ const authController = require("../controllers/authController");
 
 router.get("/", dashboardController.getDashboard);
 router.post("/addPackage", dashboardController.addPackage);
-router.get("/getPackage", dashboardController.getPackage);
+
 // GET: Logout
 router.get("/logout", authController.logout);
 

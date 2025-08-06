@@ -31,6 +31,8 @@
             </li>
             <% }) %> <% } else { %>
             <li>No packages yet.</li>
+            <% } %> <% if(customerOrCarrier === "Carrier") {%>
+            <button>Delivered</button>
             <% } %>
           </ul>
         </div>
@@ -45,7 +47,7 @@
             <p class="p-3 flex justify-center text-xl"><%= currentYear %></p>
           </div>
           <div class="border-2 border-base-100 shadow-lg rounded">
-            <h3>Hello, <%= name %>!</h3>
+            <h3>Hello, <span class="font-bold"><%= name %></span>!</h3>
             <p class="p-6 max-w-xl">
               When filling the following form you are virtually signing for the
               package and agreeing for your carrier to deliver the parcel in the

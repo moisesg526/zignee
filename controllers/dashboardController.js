@@ -34,6 +34,9 @@ module.exports = {
       const currentYear = today.getFullYear();
 
       const packages = await Package.find({ userId: req.user._id });
+      const customerOrCarrier = await User.find({
+        custORCar: req.customerOrCarrier,
+      });
 
       res.render("customerDashboard.ejs", {
         currentMonth,
@@ -41,6 +44,7 @@ module.exports = {
         currentYear,
         name: req.user.name,
         packages,
+        customerOrCarrier,
       });
     } catch (err) {
       console.error(err);
@@ -70,16 +74,6 @@ module.exports = {
     } catch (err) {
       console.log("Package validation error:", err);
       res.status(400).send("Package validation error");
-    }
-  },
-
-  getPackage: async (req, res) => {
-    try {
-      res.render("customerDashboard.ejs", {
-        trackingNum: trackingNum,
-      });
-    } catch (err) {
-      console.log(err);
     }
   },
 };
