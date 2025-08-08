@@ -20,19 +20,26 @@
     >
       <section>
         <h2 class="font-bold">Your Packages</h2>
-        <div>
+        <div class="pkg-block">
           <ul>
             <% if (packages.length > 0) { %> <% packages.forEach(pkg => { %>
             <li class="p-2 border rounded mb-2">
-              Tracking Number: <%= pkg.trackingNum %><br />
-              Address: <%= pkg.address %><br />
-              Location: <%= pkg.deliveryLocation %><br />
-              Signature: <%= pkg.signature %>
+              <button class="x-btn btn float-end w-4 h-4 text-xs">X</button>
+              <br />
+              <span class="font-bold">Tracking Number:</span> <%=
+              pkg.trackingNum %><br />
+              <span class="font-bold">Address:</span> <%= pkg.address %><br />
+              <span class="font-bold">Location:</span> <%= pkg.deliveryLocation
+              %><br />
+              <span class="font-bold">Signature:</span> <%= pkg.signature %><br />
+              <button
+                class="delivered-btn btn btn-accent text-primary border-none cursor-pointer mt-2 p-1"
+              >
+                Delivered
+              </button>
             </li>
             <% }) %> <% } else { %>
             <li>No packages yet.</li>
-            <% } %> <% if(customerOrCarrier === "Carrier") {%>
-            <button>Delivered</button>
             <% } %>
           </ul>
         </div>
@@ -94,6 +101,6 @@
         </form>
       </section>
     </main>
-    <script src="/public/js/main.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
